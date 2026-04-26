@@ -1,0 +1,55 @@
+/* Fond de la page */
+.login-container {
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Gris clair doux */
+}
+
+/* Boîte du formulaire */
+.login-box {
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Logo titre */
+.login-box h2 {
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+}
+
+/* Input */
+.form-control {
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: #000;
+  box-shadow: none;
+}
+
+/* Bouton noir */
+.btn-dark {
+  background-color: #000;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-dark:hover {
+  background-color: #222;
+}
+
+/* Texte lien bas */
+a.text-black:hover {
+  text-decoration: underline;
+}
+.btn-link {
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.btn-link:hover {
+  color: #007bff;
+}
+.alert {
+  font-size: 0.9rem;
+  border-radius: 8px;
+}

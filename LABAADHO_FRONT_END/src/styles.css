@@ -1,0 +1,9 @@
+body {
+  background-color: #ffffff;
+}
+
+nav.navbar {
+  background-image: url('/assets/textures/stone-bg.jpg');
+  background-size: cover;
+  background-position: center;
+}

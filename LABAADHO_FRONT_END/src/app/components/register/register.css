@@ -1,0 +1,25 @@
+/* Styles personnalisés pour le composant register */
+
+textarea {
+  resize: vertical;
+}
+
+.space-y-4 > * + * {
+  margin-top: 1rem;
+}
+
+/* Animation pour le formulaire */
+form {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

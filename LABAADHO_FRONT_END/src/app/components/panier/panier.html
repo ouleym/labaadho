@@ -1,0 +1,67 @@
+<div class="panier-container">
+  <h2 class="titre-panier">Votre Panier</h2>
+
+  <!-- PANIER VIDE -->
+  <div *ngIf="panier.length === 0" class="panier-vide">
+    <h2>Votre panier est vide</h2>
+    <a routerLink="/boutique" class="btn-retour">Retour à la boutique</a>
+  </div>
+
+  <!-- PANIER CONTENU -->
+  <div *ngIf="panier.length > 0" class="panier-content">
+    <!-- Table des produits -->
+    <table class="panier-table">
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of panier">
+          <td class="produit-cell">
+            <img [src]="item.produit.image" alt="Produit">
+            <div class="details">
+              <h4>{{ item.produit.libelle }}</h4>
+              <div class="prix">{{ item.produit.prix | number:'1.0-0' }} CFA</div>
+            </div>
+          </td>
+          <td>
+            <div class="quantite">
+              <button (click)="modifierQuantite(item.produit.id, item.quantite - 1)" [disabled]="item.quantite <= 1">-</button>
+              <span>{{ item.quantite }}</span>
+              <button (click)="modifierQuantite(item.produit.id, item.quantite + 1)">+</button>
+            </div>
+          </td>
+          <div class="prix">{{ item.produit.prix | number:'1.0-0' }} CFA</div>
+          <td><span class="supprimer" (click)="supprimerProduit(item.produit.id)">Supprimer</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Récapitulatif -->
+    <div class="recap-section">
+      <h3>Récapitulatif</h3>
+      <div class="recap-ligne">
+        <span>Sous-total</span>
+        <span>{{ sousTotal | number:'1.0-0' }} CFA</span>
+      </div>
+      <div class="recap-ligne">
+        <span>Frais d'expédition</span>
+        <span>{{ fraisExpedition | number:'1.0-0' }} CFA</span>
+      </div>
+      <div class="recap-total">
+        <span>Total</span>
+        <span>{{ total | number:'1.0-0' }} CFA</span>
+      </div>
+      <button class="btn-valider" (click)="passerCommande()">Passer la commande</button>
+    </div>
+  </div>
+
+  <!-- CHARGEMENT -->
+  <div *ngIf="isLoading" class="chargement">
+    Chargement en cours...
+  </div>
+</div>

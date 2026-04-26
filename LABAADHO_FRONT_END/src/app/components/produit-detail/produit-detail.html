@@ -1,0 +1,41 @@
+<div class="detail-container" *ngIf="produit">
+  <!-- Section Image -->
+  <div class="image-section">
+    <img [src]="produit.image" [alt]="produit.libelle" class="main-image" />
+  </div>
+
+  <!-- Section Informations -->
+  <div class="info-section">
+    <h1 class="titre">{{ produit.libelle }}</h1>
+    <p class="prix">{{ produit.prix | currency: 'EUR':'symbol':'1.0-2' }}</p>
+
+    <div class="options">
+      <p><strong>Couleur :</strong> <span class="couleur">{{ produit.couleur }}</span></p>
+
+      <div class="taille-container">
+        <p><strong>Taille :</strong></p>
+        <div class="tailles">
+          <button *ngFor="let taille of tailles"
+                  [class.selected]="taille === tailleSelectionnee"
+                  (click)="selectionnerTaille(taille)">
+            {{ taille }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-secondary" (click)="ajouterAuPanier(produit)">
+        <i class="fas fa-shopping-cart"></i> Ajouter au panier
+      </button>
+      <button class="btn-primary">
+        <i class="fas fa-credit-card"></i> Payer avec PayPal
+      </button>
+    </div>
+
+    <div class="description">
+      <h3>Description</h3>
+      <p>{{ produit.description }}</p>
+    </div>
+  </div>
+</div>

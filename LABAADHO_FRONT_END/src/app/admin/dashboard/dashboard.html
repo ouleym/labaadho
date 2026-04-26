@@ -1,0 +1,110 @@
+<div class="container">
+
+<aside class="sidebar">
+  <div class="sidebar-title">
+    <h2>LABAADHO</h2>
+  </div>
+
+  <nav class="menu">
+   <a routerLink="/admin/dashboard" class="menu-item">
+    <i class="fa-solid fa-chart-line"></i> Dashboard
+  </a>
+
+  <a routerLink="/admin/produits" class="menu-item active">
+    <i class="fa-solid fa-box"></i> Products
+  </a>
+
+  <a routerLink="/admin/commandes" class="menu-item">
+    <i class="fa-solid fa-cart-shopping"></i> Orders
+  </a>
+
+  <a (click)="logout()" class="menu-item logout">
+    <i class="fa-solid fa-right-from-bracket"></i> Logout
+  </a>
+  </nav>
+</aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- BARRE DE RECHERCHE -->
+    <div class="search-bar">
+      <input type="text" placeholder="Rechercher par numéro ou produit..." [(ngModel)]="searchTerm">
+      <button>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- STAT CARDS -->
+    <div class="stats-grid">
+      <div class="card" *ngFor="let card of statCards">
+        <p>{{ card.label }}</p>
+        <h3>{{ card.value }}</h3>
+      </div>
+    </div>
+
+    <!-- TABLE COMMANDES -->
+    <div class="table-container">
+      <h3>Commandes récentes</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Numéro commande</th>
+            <th>Date</th>
+            <th>Montant</th>
+            <th>Produits</th>
+            <th>Statut</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let commande of filteredCommandes">
+            <td>{{ commande.id }}</td>
+            <td>{{ commande.numCommande }}</td>
+            <td>{{ commande.dateCommande | date:'short' }}</td>
+            <td>{{ commande.montantCommande | number }} FCFA</td>
+            <td>
+              <span *ngFor="let d of commande.detailCommandes; let last=last">
+                {{ d.produit.libelle }}<span *ngIf="!last">, </span>
+              </span>
+            </td>
+            <td>
+              <span class="badge" [ngClass]="commande.statutCommande">
+                {{ commande.statutCommande.replace('_', ' ') | titlecase }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- TABLE PRODUITS (OPTIONNEL) -->
+    <div class="table-container" *ngIf="produits.length > 0">
+      <h3>Produits</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Libellé</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Couleur</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let produit of filteredProduits">
+            <td>{{ produit.id }}</td>
+            <td>{{ produit.libelle }}</td>
+            <td>{{ produit.prix | number }} FCFA</td>
+            <td>{{ produit.quantite }}</td>
+            <td>{{ produit.couleur }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+</div>

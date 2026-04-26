@@ -1,0 +1,108 @@
+<!-- 🛍️ Boutique principale -->
+<div class="boutique-container" *ngIf="!chargement">
+  <div class="header">
+    <h2>Abayas</h2>
+    <button class="filtrer-btn">Filtrer</button>
+  </div>
+
+  <div class="produit-grid">
+    <div class="produit-card" *ngFor="let produit of produits">
+      <div
+        class="image-container"
+        (mouseenter)="produit.hover = true"
+        (mouseleave)="produit.hover = false"
+      >
+        <img
+          [src]="produit.image"
+          [alt]="produit.libelle"
+          class="produit-image"
+        />
+
+        <!-- Bouton + visible au survol -->
+        <button type="button" 
+          class="plus-btn" 
+          *ngIf="produit.hover" 
+          (click)="ouvrirModal(produit)">
+          +
+        </button>
+
+        <div class="overlay-info">
+          <span class="libelle">{{ produit.libelle }}</span>
+          <span class="prix">{{ produit.prix }} CFA</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="chargement" *ngIf="chargement">
+  <p>Chargement des produits...</p>
+</div>
+
+<!-- 🌟 MODAL PRODUIT -->
+<div class="modal-backdrop" *ngIf="produitSelectionne" (click)="fermerModal()"></div>
+
+<div class="modal-container" *ngIf="produitSelectionne" (click)="$event.stopPropagation()">
+  <!-- Bouton de fermeture -->
+  <button class="close-btn" (click)="fermerModal()">×</button>
+
+  <div class="modal-content">
+    
+    <!-- Image à gauche -->
+    <div class="image-section">
+      <img [src]="produitSelectionne.image" [alt]="produitSelectionne.libelle" />
+
+      <img *ngIf="imageSecondaireVisible && produitSelectionne.image2"
+           [src]="produitSelectionne.image2"
+           [alt]="produitSelectionne.libelle + ' vue 2'" />
+    </div>
+
+    <!-- Infos à droite -->
+    <div class="info-section">
+      <h2>{{ produitSelectionne.libelle }}</h2>
+      <p class="prix">{{ produitSelectionne.prix | currency:'':'':'1.0-0' }} CFA</p>
+
+
+      <!-- Section taille -->
+      <div class="taille-section">
+        <div class="taille-header">
+          <label>Taille :</label>
+          <a [routerLink]="['/guide-tailles']" class="guide-lien">Guide des tailles</a>
+        </div>
+
+        <div class="tailles">
+          <button class="taille-btn">Taille 0</button>
+          <button class="taille-btn">Taille 1</button>
+          <button class="taille-btn inactive">Taille 2</button>
+          <button class="taille-btn active">Taille 4</button>
+        </div>
+      </div>
+
+      <!-- Section couleur -->
+      <div class="couleur-section">
+        <label>Couleur : anis</label>
+        <div class="couleurs">
+          <span class="couleur couleur-1"></span>
+          <span class="couleur couleur-2"></span>
+          <span class="couleur couleur-3"></span>
+          <span class="couleur couleur-4 active"></span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button class="btn-secondary" (click)="ajouterAuPanier(produitSelectionne)">
+          Ajouter au panier
+        </button>
+
+        <button class="btn-primary" [routerLink]="['/checkout']">
+          Passer commande
+        </button>
+      </div>
+
+      <a [routerLink]="['/produits', produitSelectionne.id]" class="voir-detail">
+        Voir les détails
+      </a>
+    </div>
+  </div>
+</div>

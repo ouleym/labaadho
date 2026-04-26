@@ -1,0 +1,21 @@
+<div *ngIf="!loading && commande; else loadingTpl">
+  <h2>Détail de la commande #{{ commande.id }}</h2>
+
+  <p><strong>Date :</strong> {{ commande.date | date:'short' }}</p>
+  <p><strong>Statut :</strong> {{ commande.statut }}</p>
+  <p><strong>Total :</strong> {{ commande.total }} €</p>
+  <p><strong>Méthode de paiement :</strong> {{ commande.methodePaiement }}</p>
+
+  <h3>Produits :</h3>
+  <ul>
+    <li *ngFor="let produit of commande.produits">
+      {{ produit.nom }} — {{ produit.prix }} €
+    </li>
+  </ul>
+
+  <button (click)="retourCommandes()">⬅ Retour à mes commandes</button>
+</div>
+
+<ng-template #loadingTpl>
+  <p>Chargement de la commande...</p>
+</ng-template>

@@ -1,0 +1,121 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4">
+  <div class="max-w-md w-full space-y-8">
+    <div>
+      <h2 class="text-center text-3xl font-extrabold text-gray-900">
+        Créer un compte
+      </h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Ou
+        <a routerLink="/login" class="font-medium text-indigo-600 hover:text-indigo-500">
+          se connecter
+        </a>
+      </p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+      <div *ngIf="errorMessage" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded">
+        {{ errorMessage }}
+      </div>
+
+      <div class="space-y-4">
+        <div>
+          <label for="nom" class="block text-sm font-medium text-gray-700">Nom complet</label>
+          <input
+            id="nom"
+            type="text"
+            formControlName="nom"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            [class.border-red-500]="registerForm.get('nom')?.invalid && registerForm.get('nom')?.touched"
+          />
+          <p *ngIf="registerForm.get('nom')?.invalid && registerForm.get('nom')?.touched" 
+             class="mt-1 text-sm text-red-600">
+            Nom requis (min 3 caractères)
+          </p>
+        </div>
+
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            [class.border-red-500]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+          />
+          <p *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" 
+             class="mt-1 text-sm text-red-600">
+            Email invalide
+          </p>
+        </div>
+
+        <div>
+          <label for="telephone" class="block text-sm font-medium text-gray-700">Téléphone</label>
+          <input
+            id="telephone"
+            type="tel"
+            formControlName="telephone"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            [class.border-red-500]="registerForm.get('telephone')?.invalid && registerForm.get('telephone')?.touched"
+          />
+          <p *ngIf="registerForm.get('telephone')?.invalid && registerForm.get('telephone')?.touched" 
+             class="mt-1 text-sm text-red-600">
+            Numéro de téléphone requis
+          </p>
+        </div>
+
+        <div>
+          <label for="adresse" class="block text-sm font-medium text-gray-700">Adresse</label>
+          <textarea
+            id="adresse"
+            formControlName="adresse"
+            rows="2"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            [class.border-red-500]="registerForm.get('adresse')?.invalid && registerForm.get('adresse')?.touched"
+          ></textarea>
+          <p *ngIf="registerForm.get('adresse')?.invalid && registerForm.get('adresse')?.touched" 
+             class="mt-1 text-sm text-red-600">
+            Adresse requise
+          </p>
+        </div>
+
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">Mot de passe</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="motDePasse"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            [class.border-red-500]="registerForm.get('motDePasse')?.invalid && registerForm.get('motDePasse')?.touched"
+          />
+          <p *ngIf="registerForm.get('motDePasse')?.invalid && registerForm.get('motDePasse')?.touched" 
+             class="mt-1 text-sm text-red-600">
+            Mot de passe requis (min 8 caractères)
+          </p>
+        </div>
+
+        <div>
+          <label for="confirmPassword" class="block text-sm font-medium text-gray-700">Confirmer le mot de passe</label>
+          <input
+            id="confirmPassword"
+            type="password"
+            formControlName="confirmPassword"
+            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+            [class.border-red-500]="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched"
+          />
+          <p *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched" 
+             class="mt-1 text-sm text-red-600">
+            Les mots de passe ne correspondent pas
+          </p>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="registerForm.invalid || isLoading"
+        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <span *ngIf="!isLoading">S'inscrire</span>
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,222 @@
+/* ================================
+   PAGE PAIEMENT – STRUCTURE GÉNÉRALE
+================================ */
+.paiement-page {
+  max-width: 1200px;
+  margin: 50px auto;      /* DESCENTE DU TITRE + aire générale */
+  padding: 15px;
+  font-family: "Inter", sans-serif;
+}
+
+.titre {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 40px;    /* espace sous le titre + propre */
+}
+
+
+
+/* ================================
+   WRAPPER PRINCIPAL
+================================ */
+.paiement-wrapper {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+
+
+/* ================================
+   FORMULAIRE FACTURATION
+================================ */
+.facturation {
+  flex: 1;
+}
+
+.facturation h2 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+input, select, textarea {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-size: 0.95rem;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #111;
+}
+
+
+
+/* ================================
+   RÉSUMÉ COMMANDE
+================================ */
+.resume {
+  width: 480px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+.resume h2 {
+  margin-bottom: 20px;
+}
+
+.resume-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.resume-table td,
+.resume-table th {
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.resume-table td:last-child {
+  text-align: right;
+}
+
+.divider {
+  font-weight: 600;
+}
+
+.total td {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+
+
+/* ================================
+   MODES DE PAIEMENT
+================================ */
+.paiement-modes {
+  margin-top: 30px;
+  background: #fff;
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Chaque mode */
+.mode-item {
+  padding: 10px 12px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* Titre du mode */
+.mode-item label {
+  font-size: 14px;     /* discret */
+  font-weight: 500;
+  color: #333;
+  display: block;      /* force le texte en haut */
+  margin-bottom: 6px;  /* espace avec les détails */
+}
+
+/* Détails sous le titre */
+.details {
+  font-size: 13px;     /* encore plus discret */
+  color: #666;
+  line-height: 1.4;
+  margin-top: 4px;
+  padding-left: 4px;
+}
+
+.mode-item:hover {
+  border-color: #d6d6d6;
+}
+
+
+
+/* ================================
+   BOUTON COMMANDER
+================================ */
+.btn-commander {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-commander:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+  .paiement-wrapper {
+    flex-direction: column;
+  }
+
+  .resume {
+    width: 100%;
+  }
+}
+.btn-commander {
+  width: 100%;
+  padding: 12px;
+  margin-top: 25px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;  /* transition fluide */
+}
+
+.btn-commander:hover:not(:disabled) {
+  background: #eac100;   /* jaune premium */
+  color: #000;           /* texte noir */
+}
+
+.btn-commander:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

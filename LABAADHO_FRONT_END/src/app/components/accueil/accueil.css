@@ -1,0 +1,139 @@
+/* ============================
+   SECTION HERO
+   ============================ */
+.hero {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* le texte commence à gauche */
+  padding: 5rem 0 5rem 2rem;   /* padding gauche aligné avec le logo */
+  background-color: #ffffff;
+  gap: 3rem;                   /* espace entre texte et image */
+}
+
+
+/* ============================
+   TEXTE
+   ============================ */
+
+.hero-text {
+  flex: 1;
+  max-width: 480px;
+  margin-left: 0; /* pas de marge supplémentaire, alignement direct */
+}
+
+
+.new {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #8a8f94;
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 20px;
+  line-height: 1.15;
+}
+
+.highlight {
+  color: #000;
+  font-weight: 800;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #555;
+  margin-bottom: 28px;
+  max-width: 360px;
+}
+
+/* ============================
+   BOUTON
+   ============================ */
+.btn-shop {
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.btn-shop:hover {
+  background-color: #222;
+  transform: translateY(-2px);
+}
+
+/* ============================
+   IMAGE — VERSION PRO
+   ============================ */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image img {
+  width: 420px;            /* 👈 taille réduite, élégante */
+  height: auto;
+  object-fit: cover;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+@media (max-width: 1100px) {
+  .hero {
+    padding: 4rem 3rem;
+  }
+
+  .title {
+    font-size: 2.8rem;
+  }
+
+  .hero-image img {
+    width: 350px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+
+  .hero-image img {
+    width: 300px;
+    margin: 1.5rem 0 0 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2.3rem;
+  }
+
+  .btn-shop {
+    padding: 10px 24px;
+    font-size: 0.9rem;
+  }
+}
+img {
+  mix-blend-mode: multiply; /* ou screen, overlay, soft-light */
+}
+.header {
+  background: 
+    linear-gradient(to bottom, rgba(255,255,255,0), #f3f3f3),
+    url('/assets/imgages/img.png');
+  background-size: cover;
+}

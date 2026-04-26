@@ -1,0 +1,41 @@
+<div class="profil-container" *ngIf="!isLoading && utilisateur as u; else loading">
+  <h2>Mon Profil</h2>
+
+  <div *ngIf="message" class="message">{{ message }}</div>
+
+  <form *ngIf="isEditing; else affichage" (ngSubmit)="sauvegarderProfil()">
+    <label>Nom :</label>
+    <input [(ngModel)]="u.nom" name="nom" required />
+
+    <label>Email :</label>
+    <input [(ngModel)]="u.email" name="email" type="email" required />
+
+    <label>Adresse :</label>
+    <input [(ngModel)]="u.adresse" name="adresse" />
+
+    <label>Téléphone :</label>
+    <input [(ngModel)]="u.telephone" name="telephone" type="tel" />
+
+    <label>Mot de passe :</label>
+    <input [(ngModel)]="u.motDePasse" name="motDePasse" type="password" />
+
+    <div class="actions">
+      <button type="submit">💾 Sauvegarder</button>
+      <button type="button" (click)="isEditing = false">❌ Annuler</button>
+    </div>
+  </form>
+
+  <ng-template #affichage>
+    <p><strong>Nom :</strong> {{ u.nom }}</p>
+    <p><strong>Email :</strong> {{ u.email }}</p>
+    <p><strong>Adresse :</strong> {{ u.adresse }}</p>
+    <p><strong>Téléphone :</strong> {{ u.telephone }}</p>
+    <p><strong>Rôle :</strong> {{ u.role }}</p>
+
+    <button (click)="activerEdition()">✏️ Modifier le profil</button>
+  </ng-template>
+</div>
+
+<ng-template #loading>
+  <div class="loading">Chargement du profil...</div>
+</ng-template>

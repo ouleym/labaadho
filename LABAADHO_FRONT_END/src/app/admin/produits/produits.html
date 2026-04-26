@@ -1,0 +1,70 @@
+<div class="admin-layout">
+  <!-- 🔹 Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-title">
+      <h2>LABAADHO</h2>
+    </div>
+
+    <nav class="menu">
+      <a routerLink="/admin/dashboard" class="menu-item">
+        <i class="fas fa-chart-line"></i> Dashboard
+      </a>
+
+      <a routerLink="/admin/produits" class="menu-item active">
+        <i class="fas fa-box"></i> Produits
+      </a>
+
+      <a routerLink="/admin/commandes" class="menu-item">
+        <i class="fas fa-shopping-cart"></i> Commandes
+      </a>
+
+     <a (click)="logout()" class="menu-item logout">
+        <i class="fas fa-sign-out-alt"></i> Logout
+     </a>
+  </nav>
+  </aside>
+
+  <!-- 🔹 Contenu principal -->
+  <main class="main-content">
+    <div class="produits-container">
+      <div class="header-section">
+        <h4>Produits</h4>
+        <button class="btn-ajout" (click)="allerAjouter()">+ Ajouter</button>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="Rechercher un produit..." />
+        <button><i class="fas fa-search"></i></button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Image</th>
+              <th>Libellé</th>
+              <th>Prix</th>
+              <th>Quantité</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let p of produits; index as i">
+              <td>{{ i + 1 }}</td>
+              <td><img [src]="p.image" alt="{{ p.libelle }}" class="img-produit" /></td>
+              <td>{{ p.libelle }}</td>
+              <td>{{ p.prix | number:'1.0-0' }} FCFA</td>
+              <td>{{ p.quantite }}</td>
+              <td class="actions">
+                <i class="fas fa-eye text-primary"></i>
+                <i class="fas fa-edit text-success"></i>
+                <i class="fas fa-trash text-danger" (click)="supprimerProduit(p.id)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,65 @@
+<div class="order-confirmation-page" *ngIf="paiementDetails">
+  <div class="confirmation-icon">✓</div>
+
+  <h1>Votre commande est terminée !</h1>
+  <p class="subtext">Merci. Votre commande a bien été reçue.</p>
+
+  <div class="order-summary">
+    <div class="summary-item">
+      <span class="label">Numéro de commande</span>
+      <span class="value">#{{ paiementDetails.commande?.id }}</span>
+    </div>
+    <div class="summary-item">
+      <span class="label">Date</span>
+      <span class="value">{{ paiementDetails.created_at | date: 'dd/MM/yyyy HH:mm' }}</span>
+    </div>
+    <div class="summary-item">
+      <span class="label">Total</span>
+      <span class="value">{{ paiementDetails.montant }} FCFA</span>
+    </div>
+    <div class="summary-item">
+      <span class="label">Méthode de paiement</span>
+      <span class="value">
+        {{ paiementDetails.modePaiement === 'wave' ? 'Wave / OM' : 'Paiement à la livraison' }}
+      </span>
+    </div>
+  </div>
+
+  <div class="order-details">
+    <h2>DÉTAILS DE LA COMMANDE</h2>
+
+    <table class="resume-table" *ngIf="paiementDetails.commande?.panier?.length > 0">
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Quantité</th>
+          <th>Prix Unitaire</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ligne of paiementDetails.commande.panier">
+          <td>{{ ligne.produit.libelle }}</td>
+          <td>{{ ligne.quantite }}</td>
+          <td>{{ ligne.produit.prix }} FCFA</td>
+          <td>{{ ligne.produit.prix * ligne.quantite }} FCFA</td>
+        </tr>
+
+        <tr class="divider">
+          <td colspan="3">Sous-total</td>
+          <td>{{ paiementDetails.commande.sousTotal }} FCFA</td>
+        </tr>
+
+        <tr>
+          <td colspan="3">Expédition</td>
+          <td>{{ paiementDetails.commande.fraisExpedition }} FCFA</td>
+        </tr>
+
+        <tr class="total">
+          <td colspan="3">Total</td>
+          <td>{{ paiementDetails.montant }} FCFA</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+.admin-clients {
+  padding: 2rem;
+}
+.admin-clients table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin-clients th, td {
+  border: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+}
+.admin-clients th {
+  background-color: #f0f0f0;
+}
+button {
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+button:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,76 @@
+<div class="admin-layout">
+
+  <!-- 🔹 Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-title">
+      <h2>LABAADHO</h2>
+    </div>
+
+    <nav class="menu">
+      <a routerLink="/admin/dashboard" class="menu-item">
+        <i class="fas fa-chart-line"></i> Dashboard
+      </a>
+
+      <a routerLink="/admin/produits" class="menu-item">
+        <i class="fas fa-box"></i> Produits
+      </a>
+
+      <a routerLink="/admin/commandes" class="menu-item active">
+        <i class="fas fa-shopping-cart"></i> Commandes
+      </a>
+
+      <a (click)="logout()" class="menu-item logout">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+    </nav>
+  </aside>
+
+  <!-- 🔹 Contenu principal -->
+  <main class="main-content">
+
+    <div class="produits-container">
+      
+      <div class="header-section">
+        <h4>Commandes</h4>
+      </div>
+
+      <div class="search-box">
+        <input type="text" placeholder="Rechercher une commande..." />
+        <button><i class="fas fa-search"></i></button>
+      </div>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Numéro</th>
+              <th>Client</th>
+              <th>Montant</th>
+              <th>Status</th>
+              <th>Articles</th>
+              <th>Paiement</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let c of commandes; index as i">
+              <td>{{ i + 1 }}</td>
+              <td>{{ c.numCommande }}</td>
+              <td>{{ c.client?.nom }} {{ c.client?.prenom }}</td>
+              <td>{{ c.montantCommande | number: '1.0-0' }} FCFA</td>
+              <td>{{ c.statutCommande }}</td>
+              <td>{{ c.detailCommandes.length }}</td>
+              <td>{{ c.paiement?.modePaiement || 'N/A' }}</td>
+              <td>{{ c.dateCommande | date:'yyyy-MM-dd HH:mm' }}</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </main>
+</div>

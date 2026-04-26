@@ -1,0 +1,302 @@
+.panier-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 0 20px;
+  font-family: "Inter", sans-serif;
+  color: #222;
+}
+
+.titre-panier {
+  text-align: center;
+  font-weight: 500;
+  font-size: 28px;
+  margin-bottom: 40px;
+}
+
+/* === PANIER VIDE === */
+.panier-vide {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.panier-vide h2 {
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.btn-retour {
+  display: inline-block;
+  margin-top: 15px;
+  background: #000;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.2s;
+}
+.btn-retour:hover {
+  background: #333;
+}
+
+/* === PANIER CONTENU === */
+.panier-content {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* === TABLE PRODUITS === */
+.panier-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.panier-table th {
+  text-align: left;
+  font-weight: 500;
+  color: #555;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.panier-table td {
+  padding: 18px 0;
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.produit-cell {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.produit-cell img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.details h4 {
+  font-size: 15px;
+  margin: 0;
+  color: #222;
+}
+.details .prix {
+  font-size: 14px;
+  color: #444;
+}
+.supprimer {
+  font-size: 13px;
+  color: #c00;
+  text-decoration: none;
+  cursor: pointer;
+}
+.supprimer:hover {
+  text-decoration: underline;
+}
+
+/* === QUANTITÉ === */
+.quantite {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 4px 10px;
+  width: fit-content;
+}
+.quantite button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #333;
+}
+.quantite span {
+  width: 25px;
+  text-align: center;
+}
+
+/* === RÉCAPITULATIF === */
+.recap-section {
+  flex: 0 0 320px;
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 24px;
+  border: 1px solid #eee;
+}
+
+.recap-section h3 {
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.recap-ligne,
+.recap-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+
+.recap-total {
+  border-top: 1px solid #e5e5e5;
+  padding-top: 10px;
+  font-weight: 600;
+  color: #000;
+}
+
+.btn-valider {
+  width: 100%;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  margin-top: 15px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-valider:hover {
+  background: #222;
+}
+
+/* === CHARGEMENT === */
+.chargement {
+  text-align: center;
+  color: #666;
+  padding: 50px;
+}
+/* === STYLE GÉNÉRAL / TYPO PLUS ÉPURE === */
+.panier-container {
+    padding-top: 70px; /* Descend le titre */
+}
+
+body, .panier-container, .recap-section, .panier-table td, .panier-table th {
+    font-family: "Poppins", "Inter", sans-serif !important;
+}
+
+/* Police plus douce et élégante */
+.panier-container, .recap-section {
+    font-size: 15px;
+    color: #222;
+}
+
+/* === TITRE — plus espacé et plus léger === */
+.titre-panier {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* === TABLE PRODUITS — aération légère === */
+.panier-table td {
+    padding: 22px 0; /* Plus respirant */
+}
+
+.produit-cell img {
+    border-radius: 10px; /* Plus moderne */
+}
+
+/* === QUANTITÉ — look plus clean === */
+.quantite {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+/* === RÉCAP — design plus aéré & moderne === */
+.recap-section {
+    padding: 30px;
+    border-radius: 16px;
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.06); /* Soft shadow */
+}
+
+.recap-section h3 {
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Lignes du récap : plus espacées */
+.recap-ligne,
+.recap-total {
+    margin-bottom: 16px;
+    font-size: 15.5px;
+}
+
+/* Total : plus fort visuellement */
+.recap-total {
+    border-top: 1px solid #ddd;
+    padding-top: 14px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* === BOUTON VALIDER — plus élégant === */
+.btn-valider {
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 14px 0;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+/* === AGRANDIR LE RÉCAP === */
+.recap-section {
+    flex: 0 0 380px; /* largeur augmentée */
+    padding: 35px; /* légèrement plus grand */
+}
+.btn-valider:hover {
+    background: #f5c400 !important; /* jaune */
+    color: #000 !important;
+}
+/* Monter un peu le titre panier */
+.titre-panier {
+    margin-top: 10px !important;  /* Avant 20px */
+    margin-bottom: 45px !important; 
+}
+
+/* Décaler le recap plus à droite */
+.panier-content {
+    gap: 60px !important; /* Avant 40px → espace plus large */
+}
+
+/* Agrandir légèrement le bloc récap pour ressembler plus à ton exemple */
+.recap-section {
+    flex: 0 0 360px !important; /* Avant 320px */
+}
+/* --- TITRE PLUS HAUT ET PLUS ÉLÉGANT --- */
+.titre-panier {
+    margin-top: -10px !important;    /* Remonte le titre */
+    margin-bottom: 55px !important;  /* Aération */
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* --- PLUS DE DÉCALAGE ENTRE LISTE PRODUITS & RÉCAP --- */
+.panier-content {
+    gap: 80px !important;   /* Avant 40px */
+}
+
+/* --- RÉCAP PLUS LARGE ET PLUS PRO --- */
+.recap-section {
+    flex: 0 0 400px !important; /* Largeur augmentée */
+    padding: 40px !important;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* --- SURVOL BOUTON = JAUNE --- */
+.btn-valider:hover {
+    background: #f5c400 !important;
+    color: #000 !important;
+}

@@ -1,0 +1,63 @@
+/* NAVBAR GLOBAL */
+.navbar {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+
+  /* Fond blanc solide */
+  background-color: #ffffff !important;
+
+  /* Navbar fixe */
+  position: fixed;
+  top: 0px; /* ➤ décollé du haut */
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+
+  /* Retirer les ombres */
+  border-bottom: none !important;
+  box-shadow: none !important;
+
+  /* Espace intérieur pour respirer */
+  padding: 1rem 2rem !important;
+}
+
+/* LOGO (LABAADHO) */
+.navbar-brand {
+  font-size: 1.9rem !important;   /* légèrement plus grand */
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: black !important;
+}
+
+/* LIENS */
+.nav-link {
+  color: black !important;
+  font-weight: 500;
+  margin: 0 12px;
+  transition: 0.3s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #000 !important;
+  border-bottom: 2px solid black;
+}
+
+/* ICONES */
+.nav-icon {
+  color: black !important;
+  font-size: 1.3rem;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.nav-icon:hover {
+  transform: scale(1.1);
+}
+
+/* BADGE PANIER */
+.badge {
+  font-size: 0.65rem;
+  border-radius: 50%;
+}

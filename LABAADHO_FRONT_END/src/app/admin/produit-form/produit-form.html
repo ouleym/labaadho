@@ -1,0 +1,38 @@
+<div class="form-container">
+  <h3>Ajouter un produit</h3>
+
+  <form [formGroup]="produitForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Libellé</label>
+      <input type="text" formControlName="libelle" placeholder="Nom du produit" />
+    </div>
+
+    <div class="form-group">
+      <label>Prix</label>
+      <input type="number" formControlName="prix" placeholder="Prix" />
+    </div>
+
+    <div class="form-group">
+      <label>Prix promo</label>
+      <input type="number" formControlName="prix_promo" placeholder="Prix promotionnel" />
+    </div>
+
+    <div class="form-group">
+      <label>Quantité</label>
+      <input type="number" formControlName="quantite" placeholder="Quantité disponible" />
+    </div>
+
+    <div class="form-group">
+      <label>Image du produit</label>
+      <input type="file" (change)="onImageSelected($event)" accept="image/*" />
+      <div class="preview" *ngIf="imagePreview">
+        <img [src]="imagePreview" alt="Prévisualisation" />
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button type="submit" class="btn-submit" [disabled]="produitForm.invalid">Enregistrer</button>
+      <button type="button" class="btn-cancel" (click)="onCancel()">Annuler</button>
+    </div>
+  </form>
+</div>

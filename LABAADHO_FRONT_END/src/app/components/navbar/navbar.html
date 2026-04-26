@@ -1,0 +1,101 @@
+<!-- Navbar visible uniquement si ce n'est pas admin -->
+<ng-container *ngIf="!isAdmin">
+  <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
+    <div class="container">
+
+      <!-- Logo -->
+      <a class="navbar-brand fw-bold text-uppercase text-black" routerLink="/">LABAADHO</a>
+
+      <!-- Toggler mobile -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Menu central -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <!-- Visiteur -->
+        <ul class="navbar-nav" *ngIf="isVisitor">
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/"
+       routerLinkActive="active"
+       [routerLinkActiveOptions]="{ exact: true }">
+       Accueil
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/boutique"
+       routerLinkActive="active">
+       Boutique
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/a-propos"
+       routerLinkActive="active">
+       À propos
+    </a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/contact"
+       routerLinkActive="active">
+       Contact
+    </a>
+  </li>
+</ul>
+
+
+        <!-- Client -->
+        <ul class="navbar-nav" *ngIf="isClient">
+          <li class="nav-item"><a class="nav-link" routerLink="/boutique" routerLinkActive="active">Boutique</a></li>
+        </ul>
+      </div>
+
+      <!-- Icônes à droite -->
+      <div class="d-flex align-items-center gap-3">
+
+        <!-- Recherche -->
+        <a href="javascript:void(0)" class="nav-icon" title="Rechercher" *ngIf="!isAdmin">
+          <i class="bi bi-search"></i>
+        </a>
+
+        <!-- Panier -->
+        <a routerLink="/panier" class="position-relative nav-icon" *ngIf="!isAdmin">
+          <i class="bi bi-bag"></i>
+          <span class="badge bg-black position-absolute top-0 start-100 translate-middle">
+            {{ nombreArticles }}
+          </span>
+        </a>
+
+        <!-- Visiteur → icône connexion -->
+        <ng-container *ngIf="isVisitor">
+          <a routerLink="/login" class="nav-icon" title="Connexion">
+            <i class="bi bi-person"></i>
+          </a>
+        </ng-container>
+
+        <!-- Client → dropdown profil -->
+        <ng-container *ngIf="isClient">
+          <div class="dropdown">
+            <a href="javascript:void(0)" class="nav-icon dropdown-toggle" id="userDropdown"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-person-fill"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li><a class="dropdown-item" routerLink="/profil">Mon profil</a></li>
+              <li><a class="dropdown-item" routerLink="/commandes">Mes commandes</a></li>
+              <li><a class="dropdown-item text-danger" (click)="logout()">Déconnexion</a></li>
+            </ul>
+          </div>
+        </ng-container>
+
+      </div>
+    </div>
+  </nav>
+</ng-container>

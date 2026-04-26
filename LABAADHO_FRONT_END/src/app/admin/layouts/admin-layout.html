@@ -1,0 +1,24 @@
+<div class="admin-container d-flex">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <h4>LABAADHO</h4>
+    </div>
+
+    <ul class="sidebar-menu">
+      <li routerLink="/admin/dashboard" routerLinkActive="active">Dashboard</li>
+      <li routerLink="/admin/produits" routerLinkActive="active">Produits</li>
+      <li routerLink="/admin/commandes" routerLinkActive="active">Commandes</li>
+      <li (click)="logout()">Déconnexion</li>
+    </ul>
+  </aside>
+
+  <!-- CONTENT -->
+  <div class="content w-100">
+    <nav class="admin-navbar shadow-sm">
+      <input type="text" class="form-control search-input" placeholder="Search here...">
+    </nav>
+
+  </div>
+</div>
