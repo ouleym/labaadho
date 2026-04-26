@@ -1,0 +1,15 @@
+# Angular
+LABAADHO_FRONT_END/node_modules/
+LABAADHO_FRONT_END/dist/
+
+# Laravel
+LABAADHO_backend/vendor/
+LABAADHO_backend/.env
+LABAADHO_backend/storage/*.key
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
